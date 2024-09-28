@@ -19,7 +19,9 @@ import { Input } from "@/components/ui/input";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { UserFormValidation } from "@/lib/validation";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
+import { createUser } from "@/lib/actions/patient.actions";
+import { useRouter } from "next/navigation";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -37,6 +39,7 @@ const formSchema = z.object({
 
 const PatientForm = () => {
   const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
@@ -56,8 +59,16 @@ const PatientForm = () => {
     setIsLoading(true);
     try {
       const userData = { name, email, phone };
+      console.log({
+        name,
+        email,
+        phone,
+      });
       const user = await createUser(userData);
-      if (user) router.push("/patients/${user.id}");
+      console.log(user);
+      if (user) {
+        router.push(`/patients/${user.$id}/register`);
+      }
     } catch (error) {}
     // Do something with the form values.
     // ✅ This will be type-safe and validated.

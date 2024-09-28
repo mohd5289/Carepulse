@@ -9,11 +9,15 @@ interface ButtonProps {
 }
 
 const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
+  const handleClick = () => {
+    console.log("Button clicked!");
+  };
   return (
     <Button
       type="submit"
       disabled={isLoading}
       className={className ?? "shad-primary-btn w-full"}
+      // onClick={handleClick}
     >
       {isLoading ? (
         <div className="flex items-center gap-4">

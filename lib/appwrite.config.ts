@@ -1,3 +1,4 @@
+// "use server";
 import * as sdk from "node-appwrite";
 export const {
   PROJECT_ID,
@@ -6,11 +7,15 @@ export const {
   PATIENT_COLLECTION_ID,
   DOCTOR_COLLECTION_ID,
   APPOINTMENT_COLLECTION_ID,
-  NEXT_PUBLIC_ID: BUCKET_ID,
+  NEXT_PUBLIC_ID,
   NEXT_PUBLIC_ENDPOINT: ENDPOINT,
+  NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
 } = process.env;
 const client = new sdk.Client();
-client.setEndpoint(ENDPOINT!).setEndpoint(PROJECT_ID!).setEndpoint(API_KEY!);
+client
+  .setEndpoint(process.env.NEXT_PUBLIC_ENDPOINT!)
+  .setProject(process.env.PROJECT_ID!)
+  .setKey(process.env.API_KEY!);
 
 export const databases = new sdk.Databases(client);
 export const storage = new sdk.Storage(client);
