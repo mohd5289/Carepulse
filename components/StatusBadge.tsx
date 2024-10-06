@@ -2,6 +2,7 @@ import { StatusIcon } from "@/constants";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
+declare type Status = "pending" | "scheduled" | "cancelled";
 
 const StatusBadge = ({ status }: { status: Status }) => {
   return (

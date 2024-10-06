@@ -7,6 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import * as Sentry from "@sentry/nextjs";
 import { useState } from "react";
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 export default async function NewAppointment({
   params: { userId },
 }: SearchParamProps) {

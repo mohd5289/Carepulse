@@ -4,7 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import * as Sentry from "@sentry/nextjs";
-
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
   Sentry.metrics.set("user_view_register", user.name);

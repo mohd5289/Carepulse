@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-// import { Appointment } from "./appwrite.types";
+import { Appointment } from "./appwrite.types";
 
 declare type SearchParamProps = {
   params: { [key: string]: string };
@@ -36,16 +36,16 @@ export interface Patient extends Models.Document {
   privacyConsent: boolean;
 }
 
-export interface Appointment extends Models.Document {
-  patient: Patient;
-  schedule: Date;
-  status: Status;
-  primaryPhysician: string;
-  reason: string;
-  note: string;
-  userId: string;
-  cancellationReason: string | null;
-}
+// export interface Appointment extends Models.Document {
+//   patient: Patient;
+//   schedule: Date;
+//   status: Status;
+//   primaryPhysician: string;
+//   reason: string;
+//   note: string;
+//   userId: string;
+//   cancellationReason: string | null;
+// }
 
 declare interface CreateUserParams {
   name: string;
