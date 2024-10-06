@@ -39,7 +39,14 @@ import FileUploader from "../ui/FileUploader";
 const formSchema = z.object({
   username: z.string().min(2).max(50),
 });
-
+declare interface CreateUserParams {
+  name: string;
+  email: string;
+  phone: string;
+}
+declare interface User extends CreateUserParams {
+  $id: string;
+}
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
 
