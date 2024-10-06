@@ -14,7 +14,9 @@ import {
 import { InputFile } from "node-appwrite/file";
 import { parseStringify } from "../utils";
 // import axios from "axios";
-
+declare interface User extends CreateUserParams {
+  $id: string;
+}
 export const createUser = async (user: CreateUserParams) => {
   try {
     const newUser = await users.create(

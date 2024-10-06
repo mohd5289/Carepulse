@@ -30,7 +30,18 @@ import {
 } from "@/lib/actions/appointment.actions";
 import { SelectItem } from "../ui/select";
 import { Appointment } from "@/types/appwrite.types";
-
+declare type Status = "pending" | "scheduled" | "cancelled";
+declare type UpdateAppointmentParams = {
+  appointmentId: string;
+  userId: string;
+  appointment: Appointment;
+  type: string;
+};
+declare interface CreateUserParams {
+  name: string;
+  email: string;
+  phone: string;
+}
 export enum FormFieldType {
   INPUT = "input",
   TEXTAREA = "textarea",
