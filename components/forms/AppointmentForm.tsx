@@ -1,4 +1,3 @@
-"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -62,7 +61,7 @@ const AppointmentForm = ({
   const router = useRouter();
   const AppointmentFormValidation = getAppointmentSchema(type);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
