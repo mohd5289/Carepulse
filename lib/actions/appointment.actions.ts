@@ -16,6 +16,12 @@ declare interface CreateUserParams {
   email: string;
   phone: string;
 }
+declare type UpdateAppointmentParams = {
+  appointmentId: string;
+  userId: string;
+  appointment: Appointment;
+  type: string;
+};
 declare type Gender = "male" | "female" | "other";
 declare interface RegisterUserParams extends CreateUserParams {
   userId: string;
@@ -48,12 +54,6 @@ declare type CreateAppointmentParams = {
   note: string | undefined;
 };
 
-declare type UpdateAppointmentParams = {
-  appointmentId: string;
-  userId: string;
-  appointment: Appointment;
-  type: string;
-};
 export const createAppointment = async (
   appointment: CreateAppointmentParams
 ) => {
@@ -124,7 +124,17 @@ export const updateAppointment = async ({
   userId,
   appointment,
   type,
-}: UpdateAppointmentParams) => {
+}: {
+  appointmentId: string;
+  userId: string;
+  appointment: {
+    primaryPhysician: string;
+    schedule: Date;
+    status: Status;
+    cancellationReason: string | undefined;
+  };
+  type: "schedule" | "create" | "cancel";
+}) => {
   try {
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
