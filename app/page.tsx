@@ -3,7 +3,10 @@ import PatientForm from "@/components/forms/PatientForm";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 export default function Home({ searchParams }: SearchParamProps) {
   const isAdmin = searchParams.admin === "true";
 
